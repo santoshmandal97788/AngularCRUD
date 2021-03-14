@@ -1,78 +1,36 @@
-<div class="panel panel-primary" *ngFor="let employee of employees">
-    <div class="panel-heading">
-      <h3 class="panel-title">{{employee.name}}</h3>
-    </div>
-    <div class="panel-body">
-  
-      <div class="col-xs-10">
-  
-        <div class="row vertical-align">
-  
-          <div class="col-xs-4">
-            <img class="imageClass" [src]="employee.photoPath" />
-          </div>
-          <div class="col-xs-8">
-  
-            <div class="row">
-              <div class="col-xs-6">
-                Gender
-              </div>
-              <div class="col-xs-6">
-                : {{employee.gender}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                Date of Birth
-              </div>
-              <div class="col-xs-6">
-                : {{employee.dateOfBirth | date}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                Contact Preference
-              </div>
-              <div class="col-xs-6">
-                : {{employee.contactPreference}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                Phone
-              </div>
-              <div class="col-xs-6">
-                : {{employee.phoneNumber}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                Email
-              </div>
-              <div class="col-xs-6">
-                : {{employee.email}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                Department
-              </div>
-              <div class="col-xs-6">
-                : {{employee.department}}
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                Is Active
-              </div>
-              <div class="col-xs-6">
-                : {{employee.isActive}}
-              </div>
-            </div>
-  
-          </div>
-  
-        </div>
-      </div>
-    </div>
+<!-- Used for calling child component data to parent component -->
+
+<!-- <h1 *ngIf="dataFromChild">{{dataFromChild?.name + ' ' + dataFromChild?.gender}}</h1> -->
+<!-- <div *ngFor="let employee of employees">
+  <app-display-employee [employee]="employee" (notify)="handleNotify($event)"></app-display-employee>
+</div> -->
+
+
+<!-- pass data, method from child component to parent component using template reference varibale -->
+<!-- <h1 #h1Variable></h1>
+
+<div *ngFor="let employee of employees">
+  <div (click)="h1Variable.innerHTML = childComponent.getNameAndGender()">
+    <app-display-employee [employee]="employee" #childComponent>
+
+    </app-display-employee>
   </div>
+</div> -->
+
+<div *ngFor="let employee of employees">
+  <div (click)="OnCLick(employee.id)" class="pointerCursor">
+    <app-display-employee [employee]="employee" #childComponent>
+
+    </app-display-employee>
+  </div>
+</div>
+
+
+<!-- input property change detection example -->
+
+<!-- <button (click)="nextEmployee()" class="btn btn-primary">
+  View Next Employee
+</button>
+<br/><br/>
+<app-display-employee [employee]="employeeToDisplay" [employeeId]="employeeToDisplay.id">
+</app-display-employee> -->
