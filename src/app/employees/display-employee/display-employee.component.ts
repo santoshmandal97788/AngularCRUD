@@ -1,5 +1,6 @@
 import { JsonPipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Employee } from 'src/models/employee.model';
 
 @Component({
@@ -32,12 +33,14 @@ export class DisplayEmployeeComponent implements OnInit{ //, OnChanges {
   // }
 
   @Input() employee:Employee=new Employee;
+   selectedEmployeeId: number;
 
   //@Output() notify:EventEmitter<Employee>= new EventEmitter<Employee>();
 
-  constructor() { }
+  constructor(private _route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.selectedEmployeeId= +this._route.snapshot.paramMap.get('id');
   }
 
   //to view @Input property change using ngOnChnages
