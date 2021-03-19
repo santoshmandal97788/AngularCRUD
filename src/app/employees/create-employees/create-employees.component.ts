@@ -13,7 +13,7 @@ import { EmployeeService } from '../employee.service';
 })
 export class CreateEmployeesComponent implements OnInit {
 
-  @ViewChild('employeeForm') public createEmployeeForm: NgForm | undefined;
+  @ViewChild('employeeForm') public createEmployeeForm: NgForm ;
   // fullName:string="";
   // email:string="";
   // fullName:string="";
@@ -27,16 +27,16 @@ export class CreateEmployeesComponent implements OnInit {
   datePickerConfig: Partial<BsDatepickerConfig>;
 
   employee: Employee = {
-    id: 1,
-    name: '',
-    gender: '',
-    contactPreference: '',
-    phoneNumber: 6736536,
-    email: '',
-    dateOfBirth: new Date,
+    id: null,
+    name: null,
+    gender: null,
+    contactPreference: null,
+    phoneNumber: null,
+    email: null,
+    dateOfBirth: null,
     department: 'select',
-    isActive: false,
-    photoPath: '',
+    isActive: null,
+    photoPath: null
   };
 
   departments: Department[]=[
@@ -57,6 +57,7 @@ export class CreateEmployeesComponent implements OnInit {
   saveEmployee(): void {
     //console.log(newEmployee);
     this._employeeService.save(this.employee);
+   this.createEmployeeForm.reset();
     this._router.navigate(['list'])
   }
 

@@ -65,7 +65,7 @@
                             [(ngModel)]="employee.gender"> Female
                     </label>
                 </div>
-                <span class="help-block" *ngIf="gender.errors?.required">
+                <span class="help-block" *ngIf="gender.touched && gender.errors?.required">
                     Gender is required
                 </span>
             </div>
