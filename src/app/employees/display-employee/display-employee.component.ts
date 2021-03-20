@@ -34,6 +34,7 @@ export class DisplayEmployeeComponent implements OnInit{ //, OnChanges {
 
   @Input() employee:Employee=new Employee;
    selectedEmployeeId: number;
+   
 
   //@Output() notify:EventEmitter<Employee>= new EventEmitter<Employee>();
 
