@@ -1,6 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/models/employee.model';
 import { EmployeeService } from '../employee.service';
 
@@ -25,12 +25,40 @@ export class ListEmployeesComponent implements OnInit {
     this.filteredEmployees = this.filterEmployees(value);
 
   }
-  constructor(private _employeeService: EmployeeService, private _router: Router) { }
+  constructor(private _employeeService: EmployeeService, private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.employees = this._employeeService.getEmployees();
     this.employeeToDisplay = this.employees[0];
-    this.filteredEmployees = this.employees;
+
+    // Read query string parameter using Snapshot Approach
+
+    // if (this._route.snapshot.queryParamMap.has('searchTerm')) {
+    //   this.searchTerm = this._route.snapshot.queryParamMap.get('searchTerm');
+    // } else {
+    //   this.filteredEmployees = this.employees;
+    // }
+    
+ // Read query string parameter using Observable Approach
+    this._route.queryParamMap.subscribe((queryParams) => {
+      if (queryParams.has('searchTerm')) {
+        this.searchTerm = queryParams.get('searchTerm');
+      } else {
+        this.filteredEmployees = this.employees;
+      }
+    });
+
+    // for Query String  paramter
+    console.log(this._route.snapshot.queryParamMap.has('searchTerm'));
+    console.log(this._route.snapshot.queryParamMap.get('searchTerm'));
+    console.log(this._route.snapshot.queryParamMap.getAll('searchTerm'));
+    console.log(this._route.snapshot.queryParamMap.keys);
+
+    // for optional route paramter
+    console.log(this._route.snapshot.paramMap.keys);
+
+
+
   }
 
   nextEmployee(): void {
