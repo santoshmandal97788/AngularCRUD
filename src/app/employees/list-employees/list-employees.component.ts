@@ -38,4 +38,11 @@ export class ListEmployeesComponent implements OnInit {
     this._router.navigate(['/employees', employeeId]);
   }
 
+  changeEmployeeName() {
+    // this.employees[0].name='Jordan';
+    const newEmployeeArray: Employee[] = Object.assign([], this.employees);
+    newEmployeeArray[0].name = 'Jordan';
+    this.employees = newEmployeeArray;
+  }
+
 }
