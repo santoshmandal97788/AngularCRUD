@@ -14,7 +14,7 @@ export class ListEmployeesComponent implements OnInit {
   private arrayIndex = 1;
   employeeToDisplay: any;
   dataFromChild!: Employee;
-
+  searchTerm: string;
   constructor(private _employeeService: EmployeeService, private _router: Router) { }
 
   ngOnInit(): void {
