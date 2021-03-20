@@ -110,7 +110,7 @@
                 <img [src]="employee.photoPath" height="200" width="200" *ngIf="previewPhoto" />
             </div>
             <div class="form-group">
-                <button (click)="togglePhotoPreview()" class="btn btn-primary">
+                <button (click)="togglePhotoPreview()" type="button" class="btn btn-primary">
                     {{previewPhoto ? "Hide " : "Show " }} Preview
                 </button>
             </div>
