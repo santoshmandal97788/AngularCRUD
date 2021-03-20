@@ -15,6 +15,7 @@ import { DisplayEmployeeComponent } from './employees/display-employee/display-e
 import { CreateEmployeeCanDeactivateGuardService } from './employees/create-employees/create-employee-can-deactivate-guard.service';
 import { EmployeeDetailsComponent } from './employees/employee-details/employee-details.component';
 import { EmployeeFilterPipe } from './employees/employee-filter.pipe';
+import { EmployeeListResolverService } from './employees/list-employees/employee-list-resolver.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { EmployeeFilterPipe } from './employees/employee-filter.pipe';
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
   ],
-  providers: [EmployeeService, CreateEmployeeCanDeactivateGuardService],
+  providers: [EmployeeService, CreateEmployeeCanDeactivateGuardService, EmployeeListResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
