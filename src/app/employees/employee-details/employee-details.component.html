@@ -80,11 +80,12 @@
         </div>
     </div>
     <div class="panel-footer">
-        <a class="btn btn-primary" [routerLink]="['/list',{id: employee.id, name: employee.name}]">
-          Back to List
+        <a class="btn btn-primary" [routerLink]="['/list',{id: employee.id, name: employee.name}]"
+            queryParamsHandling="merge" [queryParams]="{'newParam': 'newValue'}">
+            Back to List
         </a>
-        <button class="btn btn-primary pull-right" (click)="getNextEmployee()">
+        <button class="btn btn-primary pull-right" (click)="getNextEmployee()" >
             View Next Employee
-          </button>
-      </div>
+        </button>
+    </div>
 </div>

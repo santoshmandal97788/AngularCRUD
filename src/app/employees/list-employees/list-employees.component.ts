@@ -17,12 +17,12 @@ export class ListEmployeesComponent implements OnInit {
   employeeToDisplay: any;
   dataFromChild: Employee;
   private _searchTerm: string;
-  get searchTerm(){
+  get searchTerm() {
     return this._searchTerm;
   }
-  set searchTerm(value: string){
-    this._searchTerm= value;
-    this.filteredEmployees= this.filterEmployees(value);
+  set searchTerm(value: string) {
+    this._searchTerm = value;
+    this.filteredEmployees = this.filterEmployees(value);
 
   }
   constructor(private _employeeService: EmployeeService, private _router: Router) { }
@@ -30,7 +30,7 @@ export class ListEmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.employees = this._employeeService.getEmployees();
     this.employeeToDisplay = this.employees[0];
-    this.filteredEmployees= this.employees;
+    this.filteredEmployees = this.employees;
   }
 
   nextEmployee(): void {
@@ -46,23 +46,25 @@ export class ListEmployeesComponent implements OnInit {
     this.dataFromChild = eventData;
   }
   OnCLick(employeeId: number) {
-    this._router.navigate(['/employees', employeeId]);
+    this._router.navigate(['/employees', employeeId], {
+      queryParams: { 'searchTerm': this.searchTerm, 'testparam': 'testValue' }
+    });
   }
 
   changeEmployeeName() {
-    this.employees[0].name='Jordan';
-    this.filteredEmployees= this.filterEmployees(this.searchTerm);
+    this.employees[0].name = 'Jordan';
+    this.filteredEmployees = this.filterEmployees(this.searchTerm);
 
     // const newEmployeeArray: Employee[] = Object.assign([], this.employees);
     // newEmployeeArray[0].name = 'Jordan';
     // this.employees = newEmployeeArray;
   }
-  onMouseMove(){
+  onMouseMove() {
 
   }
-  filterEmployees(searchString: string){
-    return this.employees.filter(employees=>
-      employees.name.toLocaleLowerCase().indexOf(searchString.toLocaleLowerCase())!==-1);
+  filterEmployees(searchString: string) {
+    return this.employees.filter(employees =>
+      employees.name.toLocaleLowerCase().indexOf(searchString.toLocaleLowerCase()) !== -1);
   }
 
 }
