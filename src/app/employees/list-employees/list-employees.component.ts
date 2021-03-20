@@ -28,8 +28,21 @@ export class ListEmployeesComponent implements OnInit {
   constructor(private _employeeService: EmployeeService, private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.employees = this._employeeService.getEmployees();
-    this.employeeToDisplay = this.employees[0];
+   this._employeeService.getEmployees().subscribe((empList)=>{
+     this.employees=empList;
+     console.log('Subscribe : ' + new Date().toTimeString());
+     this._route.queryParamMap.subscribe((queryParams) => {
+      if (queryParams.has('searchTerm')) {
+        this.searchTerm = queryParams.get('searchTerm');
+      } else {
+  
+        this.filteredEmployees = this.employees;
+        // console.log(this.employees.length);
+        console.log('Else Block : ' + new Date().toTimeString());
+      }
+    });
+   });
+    // this.employeeToDisplay = this.employees[0];
 
     // Read query string parameter using Snapshot Approach
 
@@ -38,24 +51,18 @@ export class ListEmployeesComponent implements OnInit {
     // } else {
     //   this.filteredEmployees = this.employees;
     // }
-    
+
  // Read query string parameter using Observable Approach
-    this._route.queryParamMap.subscribe((queryParams) => {
-      if (queryParams.has('searchTerm')) {
-        this.searchTerm = queryParams.get('searchTerm');
-      } else {
-        this.filteredEmployees = this.employees;
-      }
-    });
+    
 
-    // for Query String  paramter
-    console.log(this._route.snapshot.queryParamMap.has('searchTerm'));
-    console.log(this._route.snapshot.queryParamMap.get('searchTerm'));
-    console.log(this._route.snapshot.queryParamMap.getAll('searchTerm'));
-    console.log(this._route.snapshot.queryParamMap.keys);
+    // // for Query String  paramter
+    // console.log(this._route.snapshot.queryParamMap.has('searchTerm'));
+    // console.log(this._route.snapshot.queryParamMap.get('searchTerm'));
+    // console.log(this._route.snapshot.queryParamMap.getAll('searchTerm'));
+    // console.log(this._route.snapshot.queryParamMap.keys);
 
-    // for optional route paramter
-    console.log(this._route.snapshot.paramMap.keys);
+    // // for optional route paramter
+    // console.log(this._route.snapshot.paramMap.keys);
 
 
 
