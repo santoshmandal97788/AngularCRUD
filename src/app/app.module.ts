@@ -16,6 +16,8 @@ import { CreateEmployeeCanDeactivateGuardService } from './employees/create-empl
 import { EmployeeDetailsComponent } from './employees/employee-details/employee-details.component';
 import { EmployeeFilterPipe } from './employees/employee-filter.pipe';
 import { EmployeeListResolverService } from './employees/list-employees/employee-list-resolver.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EmployeeDetailsGuardService } from './employees/employee-details/employee-details-guard.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { EmployeeListResolverService } from './employees/list-employees/employee
     ConfirmEqualValidatorDirective,
     DisplayEmployeeComponent,
     EmployeeDetailsComponent,
-    EmployeeFilterPipe
+    EmployeeFilterPipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { EmployeeListResolverService } from './employees/list-employees/employee
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
   ],
-  providers: [EmployeeService, CreateEmployeeCanDeactivateGuardService, EmployeeListResolverService],
+  providers: [EmployeeService, CreateEmployeeCanDeactivateGuardService, EmployeeListResolverService, EmployeeDetailsGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
