@@ -7,10 +7,9 @@ import { EmployeeService } from '../employee.service';
 @Component({
   selector: 'app-list-employees',
   templateUrl: './list-employees.component.html',
-  styleUrls: ['./list-employees.component.css']
+  styleUrls: ['./list-employees.component.css'],
 })
 export class ListEmployeesComponent implements OnInit {
-
   employees: Employee[];
   filteredEmployees: Employee[];
   private arrayIndex = 1;
@@ -23,28 +22,23 @@ export class ListEmployeesComponent implements OnInit {
   set searchTerm(value: string) {
     this._searchTerm = value;
     this.filteredEmployees = this.filterEmployees(value);
-
   }
-  constructor(private _employeeService: EmployeeService,
-              private _router: Router, private _route: ActivatedRoute) {
-
+  constructor(
+    private _employeeService: EmployeeService,
+    private _router: Router,
+    private _route: ActivatedRoute
+  ) {
     this.employees = this._route.snapshot.data['employeeList'];
     this._route.queryParamMap.subscribe((queryParams) => {
       if (queryParams.has('searchTerm')) {
         this.searchTerm = queryParams.get('searchTerm');
       } else {
-
         this.filteredEmployees = this.employees;
-
       }
     });
-
   }
 
-  ngOnInit(): void {
-
-
-  }
+  ngOnInit(): void {}
 
   nextEmployee(): void {
     if (this.employeeToDisplay.id <= 2) {
@@ -58,26 +52,14 @@ export class ListEmployeesComponent implements OnInit {
   handleNotify(eventData: Employee) {
     this.dataFromChild = eventData;
   }
-  OnCLick(employeeId: number) {
-    this._router.navigate(['/employees', employeeId], {
-      queryParams: { 'searchTerm': this.searchTerm, 'testparam': 'testValue' }
-    });
-  }
+  
 
-  changeEmployeeName() {
-    this.employees[0].name = 'Jordan';
-    this.filteredEmployees = this.filterEmployees(this.searchTerm);
-
-    // const newEmployeeArray: Employee[] = Object.assign([], this.employees);
-    // newEmployeeArray[0].name = 'Jordan';
-    // this.employees = newEmployeeArray;
-  }
-  onMouseMove() {
-
-  }
   filterEmployees(searchString: string) {
-    return this.employees.filter(employees =>
-      employees.name.toLocaleLowerCase().indexOf(searchString.toLocaleLowerCase()) !== -1);
+    return this.employees.filter(
+      (employees) =>
+        employees.name
+          .toLocaleLowerCase()
+          .indexOf(searchString.toLocaleLowerCase()) !== -1
+    );
   }
-
 }

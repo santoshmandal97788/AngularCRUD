@@ -1,6 +1,6 @@
 import { JsonPipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/models/employee.model';
 
 @Component({
@@ -33,12 +33,13 @@ export class DisplayEmployeeComponent implements OnInit{ //, OnChanges {
   // }
 
   @Input() employee:Employee=new Employee;
+  @Input() searchTerm:string;
    selectedEmployeeId: number;
    
 
   //@Output() notify:EventEmitter<Employee>= new EventEmitter<Employee>();
 
-  constructor(private _route:ActivatedRoute) { }
+  constructor(private _route:ActivatedRoute, private _router: Router) { }
 
   ngOnInit(): void {
     this.selectedEmployeeId= +this._route.snapshot.paramMap.get('id');
@@ -69,6 +70,11 @@ export class DisplayEmployeeComponent implements OnInit{ //, OnChanges {
 
   getNameAndGender(): string {
     return this.employee.name + ' ' + this.employee.gender;
+  }
+  viewEmployee(){
+    this._router.navigate(['/employees', this.employee.id], {
+      queryParams: { searchTerm: this.searchTerm }
+    });
   }
 
 }
