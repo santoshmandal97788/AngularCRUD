@@ -15,7 +15,7 @@ const routes: Routes = [
     resolve: { employeeList: EmployeeListResolverService }
   },
   {
-    path: 'create',
+    path: 'edit/:id',
     component: CreateEmployeesComponent,
     canDeactivate: [CreateEmployeeCanDeactivateGuardService]
   },
