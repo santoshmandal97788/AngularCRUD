@@ -2,10 +2,10 @@
   "employees": [
     {
       "id": 1,
-      "name": "Mark1",
+      "name": "Sara",
       "gender": "Male",
       "contactPreference": "Email",
-      "email": "mark@pragimtech.com",
+      "email": "sara@pragimtech.com",
       "dateOfBirth": "1988/10/25",
       "department": "3",
       "isActive": true,
@@ -32,6 +32,30 @@
       "department": "3",
       "isActive": false,
       "photoPath": "assets/images/john.png"
+    },
+    {
+      "id": 4,
+      "name": "David",
+      "gender": "Male",
+      "contactPreference": "Email",
+      "phoneNumber": "4567",
+      "email": "david@gmail.com",
+      "dateOfBirth": "2021-04-10T18:55:56.000Z",
+      "department": "1",
+      "isActive": true,
+      "photoPath": "assets/images/mark.png"
+    },
+    {
+      "id": 5,
+      "name": "santosh",
+      "gender": "Male",
+      "contactPreference": "Email",
+      "phoneNumber": "345678",
+      "email": "santoshmandal97788@gmail.com",
+      "dateOfBirth": "2021-03-07T18:15:00.000Z",
+      "department": "1",
+      "isActive": true,
+      "photoPath": "assets/images/mark.png"
     }
   ]
 }
