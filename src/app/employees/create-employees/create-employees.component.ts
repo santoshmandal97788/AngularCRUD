@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
@@ -40,7 +40,8 @@ export class CreateEmployeesComponent implements OnInit {
   constructor(
     private _employeeService: EmployeeService,
     private _router: Router,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
   ) {
     this.datePickerConfig = Object.assign(
       {},
@@ -106,5 +107,10 @@ export class CreateEmployeesComponent implements OnInit {
   }
   togglePhotoPreview() {
     this.previewPhoto = !this.previewPhoto;
+  }
+
+  ngAfterViewChecked(): void {
+    // your code to update the model
+    this.cdr.detectChanges();
   }
 }
