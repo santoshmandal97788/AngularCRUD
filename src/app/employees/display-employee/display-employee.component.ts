@@ -48,7 +48,6 @@ export class DisplayEmployeeComponent implements OnInit {
   selectedEmployeeId: number;
   confirmDelete = false;
 
-
   //@Output() notify:EventEmitter<Employee>= new EventEmitter<Employee>();
 
   constructor(
@@ -97,7 +96,10 @@ export class DisplayEmployeeComponent implements OnInit {
   }
 
   deleteEmployee() {
-    this._employeeService.deleteEmployee(this.employee.id);
+    this._employeeService.deleteEmployee(this.employee.id).subscribe(
+      () => console.log(`Employee with Id = ${this.employee.id} deleted`),
+      (err) => console.log(err)
+    );
     this.notifyDelete.emit(this.employee.id);
   }
 }

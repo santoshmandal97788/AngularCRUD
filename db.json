@@ -44,18 +44,6 @@
       "department": "1",
       "isActive": true,
       "photoPath": "assets/images/mark.png"
-    },
-    {
-      "id": 5,
-      "name": "santosh",
-      "gender": "Male",
-      "contactPreference": "Email",
-      "phoneNumber": "345678",
-      "email": "santoshmandal97788@gmail.com",
-      "dateOfBirth": "2021-03-07T18:15:00.000Z",
-      "department": "1",
-      "isActive": true,
-      "photoPath": "assets/images/mark.png"
     }
   ]
 }

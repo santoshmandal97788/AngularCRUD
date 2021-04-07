@@ -70,14 +70,15 @@ export class EmployeeService {
     );
   }
   addEmployee(employee: Employee): Observable<Employee> {
-    return this.httpClient.post<Employee>(this.baseUrl, employee, {
+    return this.httpClient
+      .post<Employee>(this.baseUrl, employee, {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json'
-        })
-    })
-        .pipe(catchError(this.handleError));
-}
-  
+          'Content-Type': 'application/json',
+        }),
+      })
+      .pipe(catchError(this.handleError));
+  }
+
   updateEmployee(employee: Employee): Observable<void> {
     return this.httpClient
       .put<void>(`${this.baseUrl}/${employee.id}`, employee, {
@@ -88,10 +89,9 @@ export class EmployeeService {
       .pipe(catchError(this.handleError));
   }
 
-  deleteEmployee(id: number) {
-    const i = this.listEmployees.findIndex((e) => e.id === id);
-    if (i !== -1) {
-      this.listEmployees.splice(i, 1);
-    }
+  deleteEmployee(id: number): Observable<void> {
+    return this.httpClient
+      .delete<void>(`${this.baseUrl}/${id}`)
+      .pipe(catchError(this.handleError));
   }
 }
