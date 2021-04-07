@@ -18,6 +18,7 @@ import { EmployeeFilterPipe } from './employees/employee-filter.pipe';
 import { EmployeeListResolverService } from './employees/list-employees/employee-list-resolver.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EmployeeDetailsGuardService } from './employees/employee-details/employee-details-guard.service';
+import { AccordionComponent } from './shared/accordion/accordion.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EmployeeDetailsGuardService } from './employees/employee-details/employ
     DisplayEmployeeComponent,
     EmployeeDetailsComponent,
     EmployeeFilterPipe,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AccordionComponent
   ],
   imports: [
     BrowserModule,
